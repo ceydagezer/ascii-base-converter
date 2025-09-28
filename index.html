@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>ASCII Dönüştürücü</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>ASCII ↔ Binary / Hex / Oct</h2>
+    <p class="subtitle">0–127 arası geçerli ASCII • çift yönlü dönüşüm</p>
+
+    <!-- METİNDEN KODA -->
+    <div class="card">
+      <label>Metin gir (harften koda):</label>
+      <input type="text" id="inputText" onkeyup="convertText()" placeholder="örn. Ceyda">
+
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Karakter</th>
+              <th>Decimal</th>
+              <th>Binary</th>
+              <th>Hex</th>
+              <th>Octal</th>
+            </tr>
+          </thead>
+          <tbody id="result"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SAYIDAN HARFE (MENÜLÜ) -->
+    <div class="card" style="margin-top:20px;">
+      <label>Sayı gir (koda göre harfe):</label>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <input type="text" id="codeInput" placeholder="örn. 65 / 1100001 / 41 / 101" style="flex:1;">
+        <select id="baseSelect">
+          <option value="10">Decimal</option>
+          <option value="2">Binary</option>
+          <option value="16">Hex</option>
+          <option value="8">Octal</option>
+        </select>
+        <button class="button" onclick="convertCode()">Çevir</button>
+      </div>
+      <p id="charResult" style="margin-top:10px; font-weight:bold;"></p>
+      <p class="subtitle">Not: Geçerli ASCII aralığı 32–127. 0–31 kontrol karakterleridir (görünmez).</p>
+    </div>
+  </div>
+
+  <script>
+    // Yardımcılar
+    function toBin(n){ return n.toString(2).padStart(8,'0'); }
+    function toHex(n){ return n.toString(16).toUpperCase().padStart(2,'0'); }
+    function toOct(n){ return n.toString(8).padStart(3,'0'); }
+
+    // Metinden koda tablo
+    function convertText() {
+      const text = document.getElementById("inputText").value;
+      const tbody = document.getElementById("result");
+      tbody.innerHTML = "";
+
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        const code = ch.charCodeAt(0);
+
+        let row = "<tr>";
+        if (code < 32 || code > 127) {
+          row += "<td>" + (code < 32 ? "CTRL" : ch) + "</td>";
+          row += "<td colspan='4' style='color:red;'>Geçersiz ASCII (" + code + ")</td>";
+        } else {
+          row += "<td>" + ch + "</td>";
+          row += "<td>" + code + "</td>";
+          row += "<td>" + toBin(code) + "</td>";
+          row += "<td>" + toHex(code) + "</td>";
+          row += "<td>" + toOct(code) + "</td>";
+        }
+        row += "</tr>";
+        tbody.innerHTML += row;
+      }
+    }
+
+    // Girilen değerin tabana göre geçerli olup olmadığını kontrol et
+    function isValidForBase(str, base){
+      const maps = {2:/^[01]+$/, 8:/^[0-7]+$/, 10:/^[0-9]+$/, 16:/^[0-9a-fA-F]+$/};
+      return maps[base].test(str);
+    }
+
+    // Menülü: sayıdan harfe
+    function convertCode() {
+      const val = document.getElementById("codeInput").value.trim();
+      const base = parseInt(document.getElementById("baseSelect").value);
+      const out = document.getElementById("charResult");
+
+      if (!val) { out.textContent=""; return; }
+      if (!isValidForBase(val, base)) {
+        out.textContent = "❌ Girilen değer seçilen tabana uygun değil.";
+        out.style.color = "red";
+        return;
+      }
+
+      const num = parseInt(val, base);
+      if (isNaN(num) || num < 32 || num > 127) {
+        out.textContent = "❌ Geçersiz ASCII aralığı ("+num+"). 32–127 olmalı.";
+        out.style.color = "red";
+      } else {
+        out.textContent = "✅ Karakter: " + String.fromCharCode(num) +
+                          "  (Dec: "+num+", Bin: "+toBin(num)+", Hex: "+toHex(num)+", Oct: "+toOct(num)+")";
+        out.style.color = "green";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
