@@ -1,25 +1,71 @@
 ```
-# ASCII Dönüştürücü
+# ASCII Base Converter
 
-Bu proje, ASCII karakterlerini farklı tabanlara dönüştüren basit bir web uygulamasıdır.  
-HTML, CSS ve JavaScript kullanılarak geliştirilmiştir.
+A simple web application that converts ASCII characters and numeric values between different number systems.
 
-## ✨ Özellikler
-- Girilen metindeki karakterleri · Decimal · Binary · Hex · Octal · tabanlarında gösterir.  
-- Sayıdan karaktere dönüşüm yapabilir · Decimal · Binary · Hex · Octal · tabanlarından seçilerek.  
-- Basit, anlaşılır ve tarayıcıda çalışır · Live Server veya doğrudan açarak kullanılabilir.  
+The project was built using **HTML, CSS, and JavaScript** as part of my early web development and programming practice.
 
-## 🚀 Çalıştırma
-1. Proje dosyalarını bilgisayarına indir.  
-2. `index.html` dosyasını tarayıcıda aç veya VS Code ile **Live Server** üzerinden çalıştır.  
-3. Metin girerek veya sayı seçip dönüştürmeyi deneyebilirsin.  
+---
 
-## 📂 Dosya Yapısı
-ascii-donusturucu/
-├─ index.html # HTML ve JavaScript kodları
-├─ styles.css # Basit pastel yeşil tema
-└─ README.md # Proje açıklaması
+## ✨ Features
 
-## 🎯 Amaç
-Bu proje, temel web teknolojilerini öğrenme ve ASCII tablosunun mantığını kavrama amacıyla geliştirilmiştir.
+- Converts text characters into:
+  - Decimal
+  - Binary
+  - Hexadecimal
+  - Octal
+
+- Converts numeric values back into ASCII characters.
+
+- Supports conversion from:
+  - Decimal
+  - Binary
+  - Hexadecimal
+  - Octal
+
+- Runs directly in the browser without requiring a backend.
+
+---
+
+## 🚀 How to Run
+
+1. Clone or download the repository.
+
+2. Open `index.html` directly in your browser.
+
+3. Alternatively, run the project using the **Live Server** extension in VS Code.
+
+4. Enter text or numeric values and select the desired conversion format.
+
+---
+
+## 📂 Project Structure
+
+ascii-base-converter/
+├── index.html
+├── styles.css
+└── README.md
+
+---
+
+## 🎯 Purpose
+
+This project was developed to practice fundamental web technologies and better understand ASCII representation and number systems.
+
+It also helped me practice basic JavaScript logic, user input handling, and data conversion.
+
+---
+
+## 🛠️ Technologies
+
+- HTML
+- CSS
+- JavaScript
+
+---
+
+## 👩‍💻 Developer
+
+**Ceyda Gezer**  
+Computer Engineering Student
 ```
