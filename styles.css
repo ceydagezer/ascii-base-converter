@@ -19,27 +19,6 @@
   --pill-oct-text: #7e22ce;
 }
 
-:root[data-theme="dark"] {
-  --bg-gradient: linear-gradient(135deg, #123524 0%, #0f2e3d 50%, #0c1f33 100%);
-  --card-bg: #17222b;
-  --card-inner-bg: #1c2a35;
-  --text: #e6edf3;
-  --muted: #9fb3c8;
-  --accent: #e6edf3;
-  --accent-2: #4ade80;
-  --border: #263241;
-  --th-bg: #1f2c3a;
-  --shadow: rgba(0, 0, 0, 0.45);
-  --success: #4ade80;
-  --error: #f87171;
-  --pill-bin-bg: #16324a;
-  --pill-bin-text: #8ab4f8;
-  --pill-hex-bg: #3a2a12;
-  --pill-hex-text: #f2b880;
-  --pill-oct-bg: #301b3f;
-  --pill-oct-text: #d8b4fe;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -71,7 +50,7 @@ body {
 
 .top-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 

@@ -138,33 +138,7 @@ function toggleReferenceTable() {
   btn.setAttribute("aria-expanded", String(isHidden));
 }
 
-// Tema
-function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  document.getElementById("themeToggle").textContent = theme === "dark" ? "☀️" : "🌙";
-  try { localStorage.setItem("theme", theme); } catch (err) { /* özel gezinti modu olabilir */ }
-}
-
-function initTheme() {
-  let theme = "light";
-  try {
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      theme = saved;
-    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      theme = "dark";
-    }
-  } catch (err) { /* özel gezinti modu olabilir */ }
-  applyTheme(theme);
-}
-
-function toggleTheme() {
-  const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  applyTheme(current === "dark" ? "light" : "dark");
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
   buildReferenceTable();
   convertText();
 
@@ -177,6 +151,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("convertBtn").addEventListener("click", convertCode);
   document.getElementById("copyBtn").addEventListener("click", copyResult);
-  document.getElementById("themeToggle").addEventListener("click", toggleTheme);
   document.getElementById("toggleRefTable").addEventListener("click", toggleReferenceTable);
 });
