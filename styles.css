@@ -1,22 +1,22 @@
 :root {
-  --bg-gradient: linear-gradient(135deg, #90c781 0%, #63b3a3 50%, #4f9dc7 100%);
-  --card-bg: #ffffff;
-  --card-inner-bg: #f8fffb;
-  --text: #1b2a2f;
-  --muted: #56706b;
-  --accent: #1b2a2f;
-  --accent-2: #2f8f6b;
-  --border: #e0f2ea;
-  --th-bg: #eafaf2;
-  --shadow: rgba(0, 0, 0, 0.12);
-  --success: #1a7f3c;
-  --error: #c0392b;
-  --pill-bin-bg: #e8f0fe;
-  --pill-bin-text: #1a56db;
-  --pill-hex-bg: #fef3e8;
-  --pill-hex-text: #b45309;
-  --pill-oct-bg: #f3e8fe;
-  --pill-oct-text: #7e22ce;
+  --bg: #f3ead9;
+  --card-bg: #fffdf8;
+  --card-inner-bg: #faf3e4;
+  --text: #3f3324;
+  --muted: #8a7a63;
+  --accent: #3f3324;
+  --accent-2: #7a5c3e;
+  --border: #e6d9c0;
+  --th-bg: #f0e4cd;
+  --shadow: rgba(63, 51, 36, 0.12);
+  --success: #3f7a4d;
+  --error: #a13d2e;
+  --pill-bin-bg: #e2e6e2;
+  --pill-bin-text: #445544;
+  --pill-hex-bg: #f0e2c8;
+  --pill-hex-text: #7a5a2c;
+  --pill-oct-bg: #e8dfe6;
+  --pill-oct-text: #5c4a5c;
 }
 
 * {
@@ -24,13 +24,11 @@
 }
 
 body {
-  background: var(--bg-gradient);
-  background-attachment: fixed;
+  background: var(--bg);
   font-family: 'Inter', Arial, sans-serif;
   color: var(--text);
   margin: 0;
   padding: 24px 16px;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .page {
@@ -45,7 +43,6 @@ body {
   padding: 24px 28px 20px;
   border-radius: 16px;
   box-shadow: 0 10px 30px var(--shadow);
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .top-bar {
@@ -62,25 +59,6 @@ body {
   border: 1px solid var(--border);
   padding: 2px 10px;
   border-radius: 999px;
-}
-
-.icon-button {
-  background: var(--card-inner-bg);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  width: 36px;
-  height: 36px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.15s ease, background 0.2s ease;
-}
-
-.icon-button:hover {
-  transform: scale(1.08);
-  background: var(--th-bg);
 }
 
 .hero {
@@ -114,7 +92,6 @@ h2 {
   border-radius: 12px;
   padding: 18px;
   margin-top: 16px;
-  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .card-header {
@@ -167,7 +144,7 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px rgba(47, 143, 107, 0.15);
+  box-shadow: 0 0 0 3px rgba(122, 92, 62, 0.15);
 }
 
 select {
@@ -256,7 +233,7 @@ th {
 }
 
 tr:hover td {
-  background: rgba(47, 143, 107, 0.06);
+  background: rgba(122, 92, 62, 0.06);
 }
 
 .empty-row td {

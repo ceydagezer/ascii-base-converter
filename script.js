@@ -52,7 +52,7 @@ function convertText() {
     emptyRow.className = "empty-row";
     const cell = document.createElement("td");
     cell.colSpan = 5;
-    cell.textContent = "Sonuçları görmek için yukarıya bir şeyler yazın ✍️";
+    cell.textContent = "Sonuçları görmek için yukarıya bir şeyler yazın";
     emptyRow.appendChild(cell);
     tbody.appendChild(emptyRow);
     return;
@@ -83,7 +83,7 @@ function convertCode() {
     return;
   }
   if (!isValidForBase(val, base)) {
-    out.textContent = "❌ Girilen değer seçilen tabana uygun değil.";
+    out.textContent = "Girilen değer seçilen tabana uygun değil.";
     out.style.color = "var(--error)";
     copyBtn.hidden = true;
     return;
@@ -91,12 +91,12 @@ function convertCode() {
 
   const num = parseInt(val, base);
   if (isNaN(num) || num < 32 || num > 127) {
-    out.textContent = "❌ Geçersiz ASCII aralığı (" + num + "). 32–127 olmalı.";
+    out.textContent = "Geçersiz ASCII aralığı (" + num + "). 32–127 olmalı.";
     out.style.color = "var(--error)";
     copyBtn.hidden = true;
   } else {
     const ch = String.fromCharCode(num);
-    out.textContent = "✅ Karakter: " + ch +
+    out.textContent = "Karakter: " + ch +
       "  (Dec: " + num + ", Bin: " + toBin(num) + ", Hex: " + toHex(num) + ", Oct: " + toOct(num) + ")";
     out.style.color = "var(--success)";
     copyBtn.hidden = false;
@@ -111,7 +111,7 @@ async function copyResult() {
   try {
     await navigator.clipboard.writeText(value);
     const original = copyBtn.textContent;
-    copyBtn.textContent = "✅";
+    copyBtn.textContent = "Kopyalandı";
     setTimeout(() => { copyBtn.textContent = original; }, 1200);
   } catch (err) {
     // Pano erişimi engellenmişse sessizce yok say
