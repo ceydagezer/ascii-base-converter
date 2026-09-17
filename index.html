@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Metin ve sayıları ASCII, Binary, Hex ve Octal arasında iki yönlü dönüştüren basit tarayıcı uygulaması.">
+  <title>ASCII Dönüştürücü</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>ASCII ↔ Binary / Hex / Oct</h2>
+    <p class="subtitle">0–127 arası geçerli ASCII • çift yönlü dönüşüm</p>
+
+    <!-- METİNDEN KODA -->
+    <div class="card">
+      <label for="inputText">Metin gir (harften koda):</label>
+      <input type="text" id="inputText" placeholder="örn. Ceyda" autocomplete="off">
+
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Karakter</th>
+              <th>Decimal</th>
+              <th>Binary</th>
+              <th>Hex</th>
+              <th>Octal</th>
+            </tr>
+          </thead>
+          <tbody id="result"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SAYIDAN HARFE (MENÜLÜ) -->
+    <div class="card" style="margin-top:20px;">
+      <label for="codeInput">Sayı gir (koda göre harfe):</label>
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <input type="text" id="codeInput" placeholder="örn. 65 / 1100001 / 41 / 101" style="flex:1;" autocomplete="off">
+        <select id="baseSelect">
+          <option value="10">Decimal</option>
+          <option value="2">Binary</option>
+          <option value="16">Hex</option>
+          <option value="8">Octal</option>
+        </select>
+        <button type="button" class="button" id="convertBtn">Çevir</button>
+      </div>
+      <p id="charResult" style="margin-top:10px; font-weight:bold;"></p>
+      <p class="subtitle">Not: Geçerli ASCII aralığı 32–127. 0–31 kontrol karakterleridir (görünmez).</p>
+    </div>
+
+    <footer class="footer">
+      <p>Geliştirici: <strong>Ceyda Gezer</strong></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
