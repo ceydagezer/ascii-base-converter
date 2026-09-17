@@ -4,7 +4,7 @@ A simple web application that converts ASCII characters and numeric values betwe
 
 The project was built using **HTML, CSS, and JavaScript** as part of my early web development and programming practice.
 
-🔗 **Live Demo:** _https://<your-username>.github.io/ascii-base-converter/_ (update this link after enabling GitHub Pages — see below)
+🔗 **Live Demo:** https://ceydagezer.github.io/ascii-base-converter/
 
 ---
 
