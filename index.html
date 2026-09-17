@@ -6,54 +6,104 @@
   <meta name="description" content="Metin ve sayıları ASCII, Binary, Hex ve Octal arasında iki yönlü dönüştüren basit tarayıcı uygulaması.">
   <title>ASCII Dönüştürücü</title>
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h2>ASCII ↔ Binary / Hex / Oct</h2>
-    <p class="subtitle">0–127 arası geçerli ASCII • çift yönlü dönüşüm</p>
-
-    <!-- METİNDEN KODA -->
-    <div class="card">
-      <label for="inputText">Metin gir (harften koda):</label>
-      <input type="text" id="inputText" placeholder="örn. Ceyda" autocomplete="off">
-
-      <div class="table-wrap" style="margin-top:12px;">
-        <table>
-          <thead>
-            <tr>
-              <th>Karakter</th>
-              <th>Decimal</th>
-              <th>Binary</th>
-              <th>Hex</th>
-              <th>Octal</th>
-            </tr>
-          </thead>
-          <tbody id="result"></tbody>
-        </table>
+  <div class="page">
+    <div class="container">
+      <div class="top-bar">
+        <span class="badge">v1.1</span>
+        <button type="button" id="themeToggle" class="icon-button" aria-label="Karanlık/Aydınlık tema değiştir" title="Temayı değiştir">🌙</button>
       </div>
-    </div>
 
-    <!-- SAYIDAN HARFE (MENÜLÜ) -->
-    <div class="card" style="margin-top:20px;">
-      <label for="codeInput">Sayı gir (koda göre harfe):</label>
-      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-        <input type="text" id="codeInput" placeholder="örn. 65 / 1100001 / 41 / 101" style="flex:1;" autocomplete="off">
-        <select id="baseSelect">
-          <option value="10">Decimal</option>
-          <option value="2">Binary</option>
-          <option value="16">Hex</option>
-          <option value="8">Octal</option>
-        </select>
-        <button type="button" class="button" id="convertBtn">Çevir</button>
+      <div class="hero">
+        <h1>🔤 ASCII Dönüştürücü</h1>
+        <p class="subtitle">Metni ve sayıları <strong>Binary</strong>, <strong>Hex</strong> ve <strong>Octal</strong> arasında anında dönüştürün.</p>
       </div>
-      <p id="charResult" style="margin-top:10px; font-weight:bold;"></p>
-      <p class="subtitle">Not: Geçerli ASCII aralığı 32–127. 0–31 kontrol karakterleridir (görünmez).</p>
-    </div>
 
-    <footer class="footer">
-      <p>Geliştirici: <strong>Ceyda Gezer</strong></p>
-    </footer>
+      <!-- METİNDEN KODA -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Metinden Koda</h2>
+          <span class="chip">harf → sayı</span>
+        </div>
+        <label for="inputText">Metin girin</label>
+        <input type="text" id="inputText" placeholder="örn. Ceyda" autocomplete="off">
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Karakter</th>
+                <th>Decimal</th>
+                <th>Binary</th>
+                <th>Hex</th>
+                <th>Octal</th>
+              </tr>
+            </thead>
+            <tbody id="result">
+              <tr class="empty-row"><td colspan="5">Sonuçları görmek için yukarıya bir şeyler yazın ✍️</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SAYIDAN HARFE (MENÜLÜ) -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Sayıdan Harfe</h2>
+          <span class="chip">sayı → harf</span>
+        </div>
+        <label for="codeInput">Değer ve taban seçin</label>
+        <div class="input-row">
+          <input type="text" id="codeInput" placeholder="örn. 65 / 1100001 / 41 / 101" autocomplete="off">
+          <select id="baseSelect" aria-label="Sayı tabanı">
+            <option value="10">Decimal</option>
+            <option value="2">Binary</option>
+            <option value="16">Hex</option>
+            <option value="8">Octal</option>
+          </select>
+          <button type="button" class="button" id="convertBtn">Çevir</button>
+        </div>
+
+        <div class="result-row">
+          <p id="charResult" class="result-text"></p>
+          <button type="button" id="copyBtn" class="icon-button copy-btn" aria-label="Sonucu kopyala" title="Kopyala" hidden>📋</button>
+        </div>
+        <p class="subtitle">Not: Geçerli ASCII aralığı 32–127. 0–31 kontrol karakterleridir (görünmez).</p>
+      </section>
+
+      <!-- ASCII REFERANS TABLOSU -->
+      <section class="card">
+        <div class="card-header">
+          <h2>ASCII Referans Tablosu</h2>
+          <button type="button" id="toggleRefTable" class="chip chip-button" aria-expanded="false" aria-controls="refTableWrap">
+            Göster
+          </button>
+        </div>
+        <div id="refTableWrap" class="table-wrap ref-table" hidden>
+          <table>
+            <thead>
+              <tr>
+                <th>Karakter</th>
+                <th>Dec</th>
+                <th>Bin</th>
+                <th>Hex</th>
+                <th>Oct</th>
+              </tr>
+            </thead>
+            <tbody id="refTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Geliştirici: <strong>Ceyda Gezer</strong> · Computer Engineering Student</p>
+      </footer>
+    </div>
   </div>
 
   <script src="script.js"></script>
